@@ -1,6 +1,6 @@
 import "./App.css";
 
-import Main from "./pages/Main";
+import Main from "./ui/pages/Main";
 
 const App = () => {
   return <Main />;

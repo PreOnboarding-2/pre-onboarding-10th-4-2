@@ -8,15 +8,15 @@
   text-overflow: ellipsis;
 
   &:hover {
-    background: #F2F2F2;
+    background: #f2f2f2;
     cursor: pointer;
   }
 
   &:active {
-    background: #D5F4F1
+    background: #d5f4f1;
   }
 
   & .highlight {
-    color: #2BC9BA;
+    color: #2bc9ba;
   }
-};
+}
