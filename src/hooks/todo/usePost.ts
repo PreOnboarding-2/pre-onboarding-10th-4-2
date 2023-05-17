@@ -1,7 +1,7 @@
 import { FormEvent, MouseEvent, useCallback } from "react";
-import { UsePostArgs } from "../types/hook";
-import { createTodo } from "../api/todo";
-import { blurInput } from "../utils";
+import { UsePostArgs } from "../../types/hook";
+import { createTodo } from "../../api/todo";
+import { blurInput } from "../../utils";
 
 const usePost = ({
   setIsLoading,
@@ -10,7 +10,7 @@ const usePost = ({
   setTodos,
   inputText,
   ref,
-  formRef
+  formRef,
 }: UsePostArgs) => {
   const handleSubmit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
@@ -29,7 +29,7 @@ const usePost = ({
         console.error(error);
         alert("Something went wrong.");
       } finally {
-        setInputText('');
+        setInputText("");
         setIsTyping(false);
         setIsLoading(false);
       }
@@ -63,7 +63,7 @@ const usePost = ({
 
   return {
     handleSubmit,
-    handleItemClick
+    handleItemClick,
   };
 };
 

@@ -1,8 +1,8 @@
 import { ChangeEvent } from "react";
-import { INITIAL_PAGE, INPUT_DELAY_TIME } from "../constants";
-import { UseSearchArgs } from "../types/hook";
-import { useDebounce } from "./useDebounce";
-import { getSuggestList } from "../api/suggest";
+import { INITIAL_PAGE, INPUT_DELAY_TIME } from "../../constants";
+import { UseSearchArgs } from "../../types/hook";
+import { useDebounce } from "../common/useDebounce";
+import { getSuggestList } from "../../api/suggest";
 
 const useSearch = ({
   setInputText,
@@ -10,9 +10,8 @@ const useSearch = ({
   setIsTyping,
   setSuggestList,
   params,
-  isMore
+  isMore,
 }: UseSearchArgs) => {
-  
   const debounce = useDebounce(INPUT_DELAY_TIME);
 
   const onChangeHandler = ({ target }: ChangeEvent<HTMLInputElement>) => {
@@ -29,7 +28,7 @@ const useSearch = ({
 
     const getSuggestions = async () => {
       try {
-        if (params.current.q === '') return;
+        if (params.current.q === "") return;
 
         setIsLoading(true);
 

@@ -1,15 +1,10 @@
 import { UIEvent } from "react";
-import { getSuggestList } from "../api/suggest";
-import { UseScrollArgs } from "../types/hook";
-import useThrottle from "./useThrottle";
-import { SCROLL_DELAY_TIME } from "../constants";
+import { getSuggestList } from "../../api/suggest";
+import { UseScrollArgs } from "../../types/hook";
+import useThrottle from "../common/useThrottle";
+import { SCROLL_DELAY_TIME } from "../../constants";
 
-const useScroll = ({
-  params,
-  isMore,
-  setSuggestList,
-  setIsScrolling,
-}: UseScrollArgs) => {
+const useScroll = ({ params, isMore, setSuggestList, setIsScrolling }: UseScrollArgs) => {
   const throttle = useThrottle(SCROLL_DELAY_TIME);
   const onScrollHandler = ({ currentTarget }: UIEvent<HTMLElement>) => {
     const { scrollTop, clientHeight, scrollHeight } = currentTarget;
@@ -19,7 +14,7 @@ const useScroll = ({
 
     const getSuggestions = async () => {
       try {
-        if (params.current.q === '') return;
+        if (params.current.q === "") return;
 
         setIsScrolling(true);
         params.current.page = params.current.page + 1;
@@ -34,7 +29,7 @@ const useScroll = ({
         alert("Something went wrong.");
       } finally {
         setIsScrolling(false);
-        if (params.current.q === '') setSuggestList([]);
+        if (params.current.q === "") setSuggestList([]);
       }
     };
     throttle(getSuggestions);
